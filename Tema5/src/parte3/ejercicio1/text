@@ -1,0 +1,56 @@
+Vehiculo
+	-marca : String
+	-modelo : String
+	-color : String
+	-matricula : String
+	-estadoMotor : boolean
+	-marchaActual : int
+	-velocidadActual : double
+	
+	+aumentarVelocidad() : void
+	+velocidadDeMarcha() : void
+	
+	+ parar() : void
+	+ arrancar() : void
+	+ subirMarcha() : void
+	+ bajarMarcha() : void
+-----------------------------------------
+	
+Turismo extends Vehiculo
+	-numeroDePlazas : int
+	-enum Tipo{PROFESIONAL, PARTICULAR} : Tipo
+	
+Heredado:
+	+aumentarVelocidad() : void
+	
+	+ parar() : void
+	+ arrancar() : void
+	+ subirMarcha() : void
+	+ bajarMarcha() : void
+-----------------------------------------
+	
+Camiones extends Vehiculo
+	-PESOMAXIMOAUTORIZADO : final double
+	-mercanciaPeligrosa : boolean
+	
+Heredado:
+	+aumentarVelocidad() : void
+	
+	+ parar() : void
+	+ arrancar() : void
+	+ subirMarcha() : void
+	+ bajarMarcha() : void
+-----------------------------------------
+	
+Motocicleta extends Vehiculo
+	-cilindrada : double
+	
+	requiereCarnet() : boolean
+	
+Heredado:
+	+aumentarVelocidad() : void
+	
+	+ parar() : void
+	+ arrancar() : void
+	+ subirMarcha() : void
+	+ bajarMarcha() : void
