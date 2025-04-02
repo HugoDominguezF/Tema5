@@ -6,7 +6,7 @@ public class Vehiculo {
 	private String modelo;
 	private String color;
 	private String matricula;
-	private boolean motorEncendido;
+	private boolean motorEncendido=false;
 	private int marchaActual;
 	private double velocidadActual;
 
@@ -36,12 +36,27 @@ public class Vehiculo {
 
 		velMarcha = velocidadDeMarcha(marchaActual);
 
-		while (velocidad > velMarcha && this.marchaActual<5) {
+		while (velocidad > velMarcha && this.marchaActual < 5) {
 			this.velocidadActual = velMarcha;
 			subirMarcha();
 			velMarcha = velocidadDeMarcha(marchaActual);
 		}
-		this.velocidadActual=velocidad;
+		this.velocidadActual = velocidad;
+
+	}
+
+	public void bajarVelocidad(double velocidad) {
+
+		double velMarcha;
+
+		velMarcha = velocidadDeMarcha(marchaActual);
+
+		while (this.marchaActual > 1) {
+			this.velocidadActual = velMarcha;
+			bajarMarcha();
+			velMarcha = velocidadDeMarcha(marchaActual);
+		}
+		this.velocidadActual = 0;
 
 	}
 
@@ -66,9 +81,26 @@ public class Vehiculo {
 		return maximo;
 	}
 
-	public void subirMarcha() {
-			this.marchaActual += 1;
-		
+	public void parar() {
+		if (velocidadActual == 0) {
+			this.motorEncendido = false;
+
+		}
 	}
 
+	public void arrancar() {
+		if (velocidadActual == 0) {
+			this.motorEncendido = true;
+		}
+	}
+
+	public void subirMarcha() {
+		this.marchaActual += 1;
+
+	}
+
+	public void bajarMarcha() {
+		this.marchaActual -= 1;
+
+	}
 }

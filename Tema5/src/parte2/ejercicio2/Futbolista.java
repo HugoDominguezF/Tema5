@@ -30,6 +30,12 @@ public class Futbolista implements Comparable<Futbolista> {
 		}
 
 	}
+	public int getEdad() {
+		return edad;
+	}
+	public int getNumGoles() {
+		return numGoles;
+	}
 
 	public int compareTo(Futbolista f) {
 

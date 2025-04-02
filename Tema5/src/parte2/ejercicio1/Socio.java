@@ -12,6 +12,12 @@ public class Socio implements Comparable<Socio> {
 		this.edad = edad;
 		this.nombre = nombre;
 	}
+	public int getEdad() {
+		return edad;
+	}
+	public String getNombre() {
+		return nombre;
+	}
 
 	public String toString() {
 		return "Id: " + id + ", Nombre: " + nombre + ", Edad: " + edad;
@@ -28,5 +34,6 @@ public class Socio implements Comparable<Socio> {
 		}
 		return res;
 	}
+	
 
 }

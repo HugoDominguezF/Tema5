@@ -3,12 +3,15 @@ Vehiculo
 	-modelo : String
 	-color : String
 	-matricula : String
+	
 	-estadoMotor : boolean
 	-marchaActual : int
 	-velocidadActual : double
 	
 	+aumentarVelocidad() : void
+	+bajarVelocidad() : void
 	+velocidadDeMarcha() : void
+	
 	
 	+ parar() : void
 	+ arrancar() : void
