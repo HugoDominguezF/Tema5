@@ -1,4 +1,4 @@
-package parte3.ejercicio2;
+package parte3.ejercicio3;
 
 import java.util.TreeSet;
 
