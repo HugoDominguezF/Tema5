@@ -4,63 +4,127 @@ import java.util.TreeSet;
 
 public class CuentaBancaria {
 
-	String numCuenta;
-	double saldo;
-	TreeSet<Titular> lista = new TreeSet<Titular>();
+	private int numCuenta;
+	protected double saldo;
+	private TreeSet<Titular> titulares;
 
-	public CuentaBancaria(Titular t) {
+	public CuentaBancaria(int numCuenta, Titular titular1) {
+
+		this.titulares = new TreeSet<Titular>();
+
+		if (titular1 != null) {
+
+			if (numCuenta > 0) {
+				this.numCuenta = numCuenta;
+			}
+
+			anyadirTitular(titular1);
+
+		}
 
 	}
 
-	public boolean ingresar(double dinero) {
-
-		boolean posible = true;
-
-		if (dinero <= 0) {
-			posible = false;
-		}
-
-		return posible;
+	public int getNumCuenta() {
+		return numCuenta;
 	}
 
-	public boolean retirar(double dinero) {
-
-		boolean posible = true;
-
-		if (dinero <= 0 || dinero > this.saldo) {
-			posible = false;
-		}
-
-		return posible;
+	public double getSaldo() {
+		return saldo;
 	}
 
-	public boolean addTitular(Titular t) {
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
 
-		boolean posible = false;
+	public TreeSet<Titular> getTitulares() {
+		return titulares;
+	}
 
-		if (lista.size() < 3) {
-			
-			lista.add(t);
-			
-			posible = true;
+	public void setTitulares(TreeSet<Titular> titulares) {
+		this.titulares = titulares;
+	}
+
+	public boolean ingresar(double saldo) {
+
+		boolean sePudo = false;
+
+		if (saldo > 0) {
+
+			sePudo = true;
+
+			this.saldo += saldo;
+
 		}
-
-		return posible;
+		return sePudo;
 
 	}
 
-	public boolean removeTitular(Titular t) {
-		boolean posible = false;
+	public boolean retirar(double saldo) {
 
-		if (lista.remove(t)) {
-			
-			lista.add(t);
-			
-			posible = true;
+		boolean sePudo = false;
+
+		if (saldo > 0) {
+
+			sePudo = true;
+
+			this.saldo -= saldo;
+
+		}
+		return sePudo;
+
+	}
+
+	public boolean anyadirTitular(Titular titular) {
+
+		boolean sePudo = false;
+
+		if (titular != null) {
+
+			sePudo = true;
+
+			this.titulares.add(titular);
+
+		}
+		return sePudo;
+
+	}
+
+	public boolean borrarTitular(Titular titular) {
+
+		boolean sePudo = false;
+
+		if (titular != null) {
+
+			for (Titular titu : titulares) {
+
+				if (titu == titular) {
+					titulares.remove(titu);
+				}
+
+			}
+
+		}
+		return sePudo;
+	}
+
+	public String sacarLista() {
+
+		String cadena = "";
+		int cont = 1;
+
+		for (Titular titu : titulares) {
+
+			cadena += "Titular " + cont + ": " + titu.toString() + "\n";
+
 		}
 
-		return posible;
+		return cadena;
 
+	}
+
+	@Override
+	public String toString() {
+		return "NumeroCuenta: " + numCuenta + ", Saldo: " + saldo + " " + sacarLista();
 	}
 
 }
